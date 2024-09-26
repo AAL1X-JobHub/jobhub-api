@@ -1,4 +1,4 @@
-package com.al1x.jobhub.entity;
+package com.al1x.jobhub.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

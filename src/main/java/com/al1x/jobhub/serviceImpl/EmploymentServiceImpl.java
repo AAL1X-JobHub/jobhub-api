@@ -1,6 +1,6 @@
 package com.al1x.jobhub.serviceImpl;
 
-import com.al1x.jobhub.entity.Job;
+import com.al1x.jobhub.domain.Job;
 import com.al1x.jobhub.repository.EmploymentRepository;
 import com.al1x.jobhub.service.EmploymentService;
 import org.springframework.beans.factory.annotation.Autowired;
