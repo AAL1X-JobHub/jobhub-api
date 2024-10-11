@@ -10,8 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProfileUpdateDto {
-    private String experience;
-    private String education;
     private String firstName;
     private String lastName;
     private String degree;
@@ -20,4 +18,6 @@ public class ProfileUpdateDto {
     private String college;
     private String email;
     private String phone;
+    private String experience;
+    private String education;
 }

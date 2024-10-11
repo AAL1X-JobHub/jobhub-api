@@ -1,6 +1,6 @@
 package com.al1x.jobhub.dto;
 
-import com.al1x.jobhub.domain.Job;
+import com.al1x.jobhub.model.entity.Job;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

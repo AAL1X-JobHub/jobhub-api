@@ -11,5 +11,5 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ApplicationDto {
     private Integer jobId;
-    private Integer userId;
+    private Integer applicantId;
 }
