@@ -1,4 +1,4 @@
-package com.al1x.jobhub.entity;
+package com.al1x.jobhub.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,10 +9,10 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "comments_application")
+@Table(name = "comments_applications")
 public class CommentsApplication {
     @Id
-    @Column(name = "id_comments_application", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "date_create", nullable = false)
@@ -27,5 +27,4 @@ public class CommentsApplication {
 
     @Column(name = "author", nullable = false, length = 50)
     private String author;
-
 }

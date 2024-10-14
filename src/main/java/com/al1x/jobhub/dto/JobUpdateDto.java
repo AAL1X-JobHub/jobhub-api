@@ -11,13 +11,11 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobDto {
-    private Integer company_id;
+public class JobUpdateDto {
     private String title;
     private String description;
     private String location;
     private String jobType;
-    private LocalDate postedDate;
     private LocalDate expirationDate;
     private Double salaryRange;
 }

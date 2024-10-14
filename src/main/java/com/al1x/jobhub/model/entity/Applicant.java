@@ -1,5 +1,6 @@
-package com.al1x.jobhub.entity;
+package com.al1x.jobhub.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,15 +8,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "applicant")
+@Table(name = "applicants")
 public class Applicant {
     @Id
-    @Column(name = "id_applicant", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @MapsId
+    //@MapsId
     @OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_applicant", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    @JsonIgnore
     private User user;
 
     @Column(name = "first_name", nullable = false, length = 50)
@@ -42,4 +44,18 @@ public class Applicant {
     @Column(name = "phone", nullable = false, length = 50)
     private String phone;
 
+    @Column(name = "curriculum_path", nullable = false, length = 255)
+    private String curriculumPath;
+
+    @Column(name = "experience", nullable = false, length = Integer.MAX_VALUE)
+    private String experience;
+
+    @Column(name = "education", nullable = false, length = Integer.MAX_VALUE)
+    private String education;
+
+    public Applicant() {}
+
+    public Applicant(Integer id) {
+        this.id = id;
+    }
 }
