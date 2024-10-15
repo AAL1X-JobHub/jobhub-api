@@ -1,4 +1,4 @@
-package com.al1x.jobhub.entity;
+package com.al1x.jobhub.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,10 +9,10 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "application_follow_up")
+@Table(name = "application_follow_ups")
 public class ApplicationFollowUp {
     @Id
-    @Column(name = "id_follow_application", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "application_date", nullable = false)
@@ -22,11 +22,10 @@ public class ApplicationFollowUp {
     private LocalDate lastUpdate;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "job_phase_id_phase", nullable = false)
-    private JobPhase jobPhaseIdPhase;
+    @JoinColumn(name = "job_phase_id", referencedColumnName = "id", nullable = false)
+    private JobPhase jobPhase;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "application_id", nullable = false)
+    @JoinColumn(name = "application_id", referencedColumnName = "id",nullable = false)
     private Application application;
-
 }

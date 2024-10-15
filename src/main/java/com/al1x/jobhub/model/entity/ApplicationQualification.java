@@ -1,4 +1,4 @@
-package com.al1x.jobhub.entity;
+package com.al1x.jobhub.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -7,17 +7,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "application_qualification")
+@Table(name = "application_qualifications")
 public class ApplicationQualification {
     @Id
-    @Column(name = "qualification_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "level", nullable = false)
     private Integer level;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "application_follow_up_id_follow_application", nullable = false)
-    private ApplicationFollowUp applicationFollowUpIdFollowApplication;
-
+    @JoinColumn(name = "application_follow_up_id", referencedColumnName = "id", nullable = false)
+    private ApplicationFollowUp applicationFollowUp;
 }
