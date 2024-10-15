@@ -13,8 +13,6 @@ public class JobMapper {
     private final ModelMapper modelMapper;
 
     public JobDetailsDto toJobDetailsDto(Job job) { return modelMapper.map(job, JobDetailsDto.class); }
-
     public Job toJob(JobDetailsDto jobDetailsDto) { return modelMapper.map(jobDetailsDto, Job.class); }
-
     public Job toJob(JobDto jobDto) { return modelMapper.map(jobDto, Job.class); }
 }

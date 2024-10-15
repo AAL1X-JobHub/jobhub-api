@@ -1,7 +1,6 @@
 package com.al1x.jobhub.api;
 
 import com.al1x.jobhub.model.entity.Job;
-import com.al1x.jobhub.dto.JobDetailsDto;
 import com.al1x.jobhub.dto.JobDto;
 import com.al1x.jobhub.dto.JobUpdateDto;
 import com.al1x.jobhub.service.JobService;
@@ -18,56 +17,55 @@ import java.util.List;
 public class JobController {
     private final JobService jobService;
 
-    @GetMapping()
+    // Another Functions
+    @GetMapping("/read")
     public ResponseEntity<List<Job>> getAllJobs(){
-        List<Job> jobs = jobService.listJobs();
-        return new ResponseEntity<List<Job>>(jobs, HttpStatus.OK);
+        return new ResponseEntity<>(jobService.readJobs(), HttpStatus.FOUND);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Job> getJobById(@PathVariable Integer id){
-        Job job = jobService.getJobById(id);
-        return ResponseEntity.ok(job);
+    // CRUD
+    @PostMapping("/create")
+    public ResponseEntity<String> createJob(@RequestBody JobDto jobDto) {
+        jobService.createJob(jobDto);
+        return new ResponseEntity<>("El trabajo fue creado correctamente", HttpStatus.CREATED);
+    }
+    @GetMapping("/read/{id}")
+    public ResponseEntity<Job> readJob(@PathVariable("id") Integer id){
+        return new ResponseEntity<>(jobService.readJob(id), HttpStatus.FOUND);
+    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> modifyJob(@PathVariable("id") Integer id, @RequestBody JobUpdateDto jobUpdateDto) {
+        jobService.updateJob(id, jobUpdateDto);
+        return new ResponseEntity<>("El trabajo fue modificado correctamente", HttpStatus.ACCEPTED);
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteJob(@PathVariable("id") Integer id) {
+        jobService.deleteJob(id);
+        return new ResponseEntity<>("El trabajo fue eliminado correctamente", HttpStatus.OK);
     }
 
-    @GetMapping("/filters")
-    public List<Job> searchJobsByFilters(@RequestParam(name = "jobType", required = false) String jobType,
+    // US 20
+    @GetMapping("/search")
+    public ResponseEntity<List<Job>> searchJobsByFilters(@RequestParam(name = "jobType", required = false) String jobType,
                                          @RequestParam(name = "location", required = false) String location,
                                          @RequestParam(name = "maxSalary", required = false) Double maxSalary,
                                          @RequestParam(name = "minSalary", required = false) Double minSalary) {
-        return jobService.filterJobs(jobType, location, maxSalary, minSalary);
+        return new ResponseEntity<>(jobService.searchJobs(jobType, location, maxSalary, minSalary), HttpStatus.FOUND);
     }
-
     @GetMapping("/search/type")
-    public List<Job> searchJobsByType(@RequestParam(name = "jobType", required = false) String jobType) {
-        return jobService.filterByJobType(jobType);
+    public ResponseEntity<List<Job>> searchJobsByType(@RequestParam(name = "jobType", required = false) String jobType) {
+        return new ResponseEntity<>(jobService.searchByJobType(jobType), HttpStatus.FOUND);
     }
     @GetMapping("/search/location")
-    public List<Job> searchJobsByLocation(@RequestParam(name = "location", required = false) String location) {
-        return jobService.filterByLocation(location);
+    public ResponseEntity<List<Job>> searchJobsByLocation(@RequestParam(name = "location", required = false) String location) {
+        return new ResponseEntity<>(jobService.searchByLocation(location), HttpStatus.FOUND);
     }
-    @GetMapping("/search/max-salary")
-    public List<Job> searchJobsByMaxSalary(@RequestParam(name = "maxSalary", required = false) Double maxSalary) {
-        return jobService.filterByMaxSalary(maxSalary);
+    @GetMapping("/search/maxSalary")
+    public ResponseEntity<List<Job>> searchJobsByMaxSalary(@RequestParam(name = "maxSalary", required = false) Double maxSalary) {
+        return new ResponseEntity<>(jobService.searchByMaxSalary(maxSalary), HttpStatus.FOUND);
     }
-    @GetMapping("/search/min-salary")
-    public List<Job> searchJobsByMinSalary(@RequestParam(name = "minSalary", required = false) Double minSalary) {
-        return jobService.filterByMinSalary(minSalary);
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<JobDetailsDto> createJob(@RequestBody JobDto jobDto) {
-        JobDetailsDto jobDetailsDto = jobService.createJob(jobDto);
-        return new ResponseEntity<>(jobDetailsDto, HttpStatus.CREATED);
-    }
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteJob(@PathVariable("id") Integer id) {
-        jobService.deleteJob(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-    @PutMapping("/modify/{id}")
-    public ResponseEntity<String> modifyJob(@PathVariable("id") Integer id, @RequestBody JobUpdateDto jobUpdateDto) {
-        jobService.updateJob(id, jobUpdateDto);
-        return ResponseEntity.ok("Trabajo modificado correctamente");
+    @GetMapping("/search/minSalary")
+    public ResponseEntity<List<Job>> searchJobsByMinSalary(@RequestParam(name = "minSalary", required = false) Double minSalary) {
+        return new ResponseEntity<>(jobService.searchByMinSalary(minSalary), HttpStatus.FOUND);
     }
 }

@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-
-import java.time.LocalDate;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
@@ -25,7 +23,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(BadRequestException.class)
-    public ResponseEntity<CustomErrorResponse> handleModelNotFoundException(BadRequestException ex, WebRequest request){
+    public ResponseEntity<CustomErrorResponse> handleModelNotFoundException(BadRequestException ex){
         CustomErrorResponse errorDetails = new CustomErrorResponse();
         errorDetails.setTitle("Bad request");
         errorDetails.setStatus(400);
@@ -34,7 +32,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<CustomErrorResponse> handleAllException(Exception ex, WebRequest request){
+    public ResponseEntity<CustomErrorResponse> handleAllException(Exception ex){
         CustomErrorResponse errorDetails = new CustomErrorResponse();
         errorDetails.setTitle("Internal Server Error");
         errorDetails.setStatus(500);
