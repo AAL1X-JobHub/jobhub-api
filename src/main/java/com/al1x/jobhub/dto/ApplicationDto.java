@@ -7,9 +7,13 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class ApplicationDto {
     private Integer jobId;
     private Integer applicantId;
+
+    public ApplicationDto(Integer jobId, Integer applicantId) {
+        this.jobId = jobId;
+        this.applicantId = applicantId;
+    }
 }

@@ -22,7 +22,7 @@ public class Application {
     @JoinColumn(name = "job_id", referencedColumnName = "id", nullable = false)
     private Job job;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "applicant_id", referencedColumnName = "id",nullable = false)
     private Applicant applicant;
 }
