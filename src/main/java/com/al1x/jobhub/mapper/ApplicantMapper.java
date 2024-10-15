@@ -13,8 +13,6 @@ public class ApplicantMapper {
     private final ModelMapper modelMapper;
 
     public ApplicantDetailsDto toApplicantDetailsDto(Applicant applicant) { return modelMapper.map(applicant, ApplicantDetailsDto.class); }
-
     public Applicant toApplicant(ApplicantDetailsDto applicantDetailsDto) { return modelMapper.map(applicantDetailsDto, Applicant.class); }
-
     public Applicant toApplicant(ApplicantDto applicantDto) { return modelMapper.map(applicantDto, Applicant.class); }
 }
