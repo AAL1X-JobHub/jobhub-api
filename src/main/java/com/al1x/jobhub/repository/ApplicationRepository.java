@@ -2,11 +2,13 @@ package com.al1x.jobhub.repository;
 
 import com.al1x.jobhub.model.entity.Application;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
 public interface ApplicationRepository extends JpaRepository<Application, Integer> {
-    List<Application> findByApplicantId(Integer applicantId);
+    @Query("SELECT a FROM Application a JOIN FETCH a.job j JOIN FETCH a.applicant app WHERE app.id = :id")
+    List<Application> findByApplicantId(Integer id);
+
 }

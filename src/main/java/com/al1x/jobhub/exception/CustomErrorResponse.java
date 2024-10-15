@@ -3,8 +3,8 @@ package com.al1x.jobhub.exception;
 import lombok.Data;
 
 @Data
-public class CustomErrorDetails {
+public class CustomErrorResponse {
     private String title;
     private int status;
-    private String detail;
+    private String details;
 }

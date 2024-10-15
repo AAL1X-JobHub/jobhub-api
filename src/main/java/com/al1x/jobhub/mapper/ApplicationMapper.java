@@ -15,9 +15,7 @@ public class ApplicationMapper {
     private final ModelMapper modelMapper;
 
     public ApplicationDetailsDto toApplicationDetailsDto(Application application) { return modelMapper.map(application, ApplicationDetailsDto.class); }
-
     public Application toApplication(ApplicationDetailsDto applicationDetailsDto) { return modelMapper.map(applicationDetailsDto, Application.class); }
-
     public Application toApplication(ApplicationDto applicationDto) {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setAmbiguityIgnored(true);

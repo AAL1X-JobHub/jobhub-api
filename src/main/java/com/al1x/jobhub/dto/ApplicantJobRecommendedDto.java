@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RecommendationDto {
+public class ApplicantJobRecommendedDto {
     private Integer applicantId;
     private List<Integer> recommendedJobIds;
     private List<Job> recommendedJobs;

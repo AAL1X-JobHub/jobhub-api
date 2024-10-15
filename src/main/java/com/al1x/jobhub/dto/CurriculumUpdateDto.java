@@ -1,4 +1,3 @@
-// CurriculumUpdateDto.java
 package com.al1x.jobhub.dto;
 
 import lombok.AllArgsConstructor;

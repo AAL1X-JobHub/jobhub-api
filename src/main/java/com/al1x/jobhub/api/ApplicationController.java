@@ -1,9 +1,8 @@
 package com.al1x.jobhub.api;
 
-import com.al1x.jobhub.dto.ApplicantDetailsDto;
-import com.al1x.jobhub.dto.ApplicationDetailsDto;
 import com.al1x.jobhub.dto.ApplicationDto;
 import com.al1x.jobhub.model.entity.Application;
+import com.al1x.jobhub.service.ApplicantService;
 import com.al1x.jobhub.service.ApplicationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,16 +16,26 @@ import java.util.List;
 @RequestMapping("/applications")
 public class ApplicationController {
     private final ApplicationService applicationService;
+    private final ApplicantService applicantService;
 
-    @PostMapping("/apply")
-    public ResponseEntity<ApplicationDetailsDto> applyForJob(@RequestBody ApplicationDto applicationDto) {
-        ApplicationDetailsDto applicationDetailsDto = applicationService.EmploymentApplication(applicationDto);
-        return new ResponseEntity<>(applicationDetailsDto, HttpStatus.CREATED);
+    // CRUD
+    @PostMapping("/create")
+    public ResponseEntity<String> createApplication(@RequestBody ApplicationDto applicationDto) {
+        applicationService.createApplication(applicationDto);
+        return new ResponseEntity<>("La postulación fue creada correctamente", HttpStatus.CREATED);
     }
-
-    @GetMapping("/history/{id}")
-    public ResponseEntity<List<Application>> getApplicationHistory(@PathVariable Integer id) {
-        List<Application> applications = applicationService.getApplicationHistory(id);
-        return ResponseEntity.ok(applications);
+    @GetMapping("/read")
+    public ResponseEntity<List<Application>> readApplications(@RequestParam(name = "applicantId", required = false) Integer applicantId){
+        return new ResponseEntity<>(applicantService.readApplicationHistory(applicantId), HttpStatus.FOUND);
+    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateApplication(@PathVariable("id")Integer id, @RequestBody ApplicationDto applicationDto) {
+        applicationService.updateApplication(id, applicationDto);
+        return new ResponseEntity<>("La postulación fue modificada correctamente", HttpStatus.ACCEPTED);
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteApplication(@PathVariable("id")Integer id) {
+        applicationService.deleteApplication(id);
+        return new ResponseEntity<>("La postulación fue eliminada correctamente", HttpStatus.OK);
     }
 }
