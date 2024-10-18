@@ -1,8 +1,8 @@
 package com.al1x.jobhub.api;
 
 import com.al1x.jobhub.model.entity.Job;
-import com.al1x.jobhub.dto.JobDto;
-import com.al1x.jobhub.dto.JobUpdateDto;
+import com.al1x.jobhub.dto.JobDTO;
+import com.al1x.jobhub.dto.JobUpdateDTO;
 import com.al1x.jobhub.service.JobService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,7 +25,7 @@ public class JobController {
 
     // CRUD
     @PostMapping("/create")
-    public ResponseEntity<String> createJob(@RequestBody JobDto jobDto) {
+    public ResponseEntity<String> createJob(@RequestBody JobDTO jobDto) {
         jobService.createJob(jobDto);
         return new ResponseEntity<>("El trabajo fue creado correctamente", HttpStatus.CREATED);
     }
@@ -34,7 +34,7 @@ public class JobController {
         return new ResponseEntity<>(jobService.readJob(id), HttpStatus.FOUND);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> modifyJob(@PathVariable("id") Integer id, @RequestBody JobUpdateDto jobUpdateDto) {
+    public ResponseEntity<String> modifyJob(@PathVariable("id") Integer id, @RequestBody JobUpdateDTO jobUpdateDto) {
         jobService.updateJob(id, jobUpdateDto);
         return new ResponseEntity<>("El trabajo fue modificado correctamente", HttpStatus.ACCEPTED);
     }

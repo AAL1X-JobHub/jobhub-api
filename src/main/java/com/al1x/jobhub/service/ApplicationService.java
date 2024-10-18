@@ -1,14 +1,10 @@
 package com.al1x.jobhub.service;
 
-import com.al1x.jobhub.dto.ApplicationDetailsDto;
-import com.al1x.jobhub.model.entity.Application;
-import com.al1x.jobhub.dto.ApplicationDto;
-
-import java.util.List;
+import com.al1x.jobhub.dto.ApplicationDTO;
 
 public interface ApplicationService {
     // CRUD
-    void createApplication(ApplicationDto applicationDto);
-    void updateApplication(Integer id, ApplicationDto applicationDto);
+    void createApplication(ApplicationDTO applicationDto);
+    void updateApplication(Integer id, ApplicationDTO applicationDto);
     void deleteApplication(Integer id);
 }

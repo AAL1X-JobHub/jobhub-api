@@ -12,18 +12,18 @@ public interface ApplicantService {
     List<Application> readApplicationHistory(Integer id);
 
     // CRUD
-    void createApplicant(ApplicantDto applicantDto);
+    void createApplicant(ApplicantDTO applicantDto);
     Applicant readApplicant(Integer id);
-    void updateApplicant(Integer applicantId, ProfileUpdateDto profileUpdateDto);
+    void updateApplicant(Integer applicantId, ApplicantUpdateDTO profileUpdateDto);
     void deleteApplicant(Integer applicantId);
 
     // US 14
-    void addApplicantCurriculum(Integer applicantId, CurriculumUpdateDto curriculumUpdateDto);
+    void addApplicantCurriculum(Integer applicantId, CurriculumUpdateDTO curriculumUpdateDto);
     // US 15
-    void addApplicantInformation(Integer applicantId, ProfileUpdateDto profileUpdateDto);
+    void addApplicantInformation(Integer applicantId, ApplicantUpdateDTO profileUpdateDto);
     // US 19
-    ApplicantJobRecommendedDto recommendedJobs(Integer applicantId);
-    ApplicantJobRecommendedDto recommendedByTitle(Integer applicantId);
-    ApplicantJobRecommendedDto recommendedByLocation(Integer applicantId);
+    ApplicantJobRecommendedDTO recommendedJobs(Integer applicantId);
+    ApplicantJobRecommendedDTO recommendedByTitle(Integer applicantId);
+    ApplicantJobRecommendedDTO recommendedByLocation(Integer applicantId);
     void applicationJob(Integer id, Integer jobId);
 }

@@ -14,7 +14,6 @@ public class Applicant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    //@MapsId
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     @JsonIgnore

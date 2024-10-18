@@ -1,7 +1,7 @@
 package com.al1x.jobhub.service;
 
-import com.al1x.jobhub.dto.JobDto;
-import com.al1x.jobhub.dto.JobUpdateDto;
+import com.al1x.jobhub.dto.JobDTO;
+import com.al1x.jobhub.dto.JobUpdateDTO;
 import com.al1x.jobhub.model.entity.Job;
 import java.util.List;
 
@@ -10,9 +10,9 @@ public interface JobService {
     List<Job> readJobs();
 
     // CRUD
-    void createJob(JobDto jobDto);
+    void createJob(JobDTO jobDto);
     Job readJob(Integer id);
-    void updateJob(Integer id, JobUpdateDto jobUpdateDtoDto);
+    void updateJob(Integer id, JobUpdateDTO jobUpdateDtoDto);
     void deleteJob(Integer id);
 
     // US 20

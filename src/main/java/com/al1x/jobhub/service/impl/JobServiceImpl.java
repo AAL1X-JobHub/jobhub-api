@@ -2,8 +2,8 @@ package com.al1x.jobhub.service.impl;
 
 import com.al1x.jobhub.model.entity.Company;
 import com.al1x.jobhub.model.entity.Job;
-import com.al1x.jobhub.dto.JobDto;
-import com.al1x.jobhub.dto.JobUpdateDto;
+import com.al1x.jobhub.dto.JobDTO;
+import com.al1x.jobhub.dto.JobUpdateDTO;
 import com.al1x.jobhub.exception.ResourceNotFoundException;
 import com.al1x.jobhub.mapper.JobMapper;
 import com.al1x.jobhub.repository.CompanyRepository;
@@ -31,7 +31,7 @@ public class JobServiceImpl implements JobService {
     // CRUD
     @Transactional
     @Override
-    public void createJob(JobDto jobDto) {
+    public void createJob(JobDTO jobDto) {
         Job job = jobMapper.toJob(jobDto);
 
         Company company = companyRepository.findById(jobDto.getCompany_id()).orElseThrow(() -> new ResourceNotFoundException("La compañia con ID " + jobDto.getCompany_id() + " no fue encontrada"));
@@ -54,7 +54,7 @@ public class JobServiceImpl implements JobService {
     }
     @Transactional
     @Override
-    public void updateJob(Integer id, JobUpdateDto jobUpdateDto) {
+    public void updateJob(Integer id, JobUpdateDTO jobUpdateDto) {
         Job job = jobRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El trabajo con ID " + id + " no fue encontrado"));
 
         job.setTitle(jobUpdateDto.getTitle());

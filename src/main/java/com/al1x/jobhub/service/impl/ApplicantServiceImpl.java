@@ -43,7 +43,7 @@ public class ApplicantServiceImpl implements ApplicantService {
     // CRUD
     @Transactional
     @Override
-    public void createApplicant(ApplicantDto applicantDto) {
+    public void createApplicant(ApplicantDTO applicantDto) {
         Applicant applicant = applicantMapper.toApplicant(applicantDto);
 
         User user = userRepository.findById(applicantDto.getUserId()).orElseThrow(() -> new ResourceNotFoundException("El usuario con ID " + applicantDto.getUserId() + " no fue encontrado"));
@@ -70,7 +70,7 @@ public class ApplicantServiceImpl implements ApplicantService {
     }
     @Transactional
     @Override
-    public void updateApplicant(Integer id, ProfileUpdateDto profileUpdateDto) {
+    public void updateApplicant(Integer id, ApplicantUpdateDTO profileUpdateDto) {
         Applicant applicant = applicantRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El perfil con ID " + id + " no fue encontrado"));
 
         applicant.setFirstName(profileUpdateDto.getFirstName());
@@ -96,7 +96,7 @@ public class ApplicantServiceImpl implements ApplicantService {
     // US 14
     @Transactional
     @Override
-    public void addApplicantCurriculum(Integer id, CurriculumUpdateDto curriculumUpdateDto) {
+    public void addApplicantCurriculum(Integer id, CurriculumUpdateDTO curriculumUpdateDto) {
         Applicant applicant = applicantRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El perfil con ID " + id + " no fue encontrado"));
 
         applicant.setCurriculumPath(curriculumUpdateDto.getFilePath());
@@ -106,7 +106,7 @@ public class ApplicantServiceImpl implements ApplicantService {
     // US 15
     @Transactional
     @Override
-    public void addApplicantInformation(Integer id, ProfileUpdateDto profileUpdateDto) {
+    public void addApplicantInformation(Integer id, ApplicantUpdateDTO profileUpdateDto) {
         Applicant applicant = applicantRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El perfil con ID " + id + " no fue encontrado"));
 
         applicant.setExperience(profileUpdateDto.getExperience());
@@ -116,12 +116,12 @@ public class ApplicantServiceImpl implements ApplicantService {
     }
     // US 19
     @Override
-    public ApplicantJobRecommendedDto recommendedJobs(Integer id) {
+    public ApplicantJobRecommendedDTO recommendedJobs(Integer id) {
         Applicant applicant = applicantRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El perfil con ID " + id + " no fue encontrado"));
 
         List<Job> recommendedJobs = jobRepository.recommendedJobs(applicant.getDegree(), applicant.getCountry());
         List<Integer> recommendedJobIds = recommendedJobs.stream().map(Job::getId).collect(Collectors.toList());
-        ApplicantJobRecommendedDto applicantJobRecommendedDto = new ApplicantJobRecommendedDto();
+        ApplicantJobRecommendedDTO applicantJobRecommendedDto = new ApplicantJobRecommendedDTO();
 
         applicantJobRecommendedDto.setApplicantId(id);
         applicantJobRecommendedDto.setRecommendedJobIds(recommendedJobIds);
@@ -130,12 +130,12 @@ public class ApplicantServiceImpl implements ApplicantService {
         return applicantJobRecommendedDto;
     }
     @Override
-    public ApplicantJobRecommendedDto recommendedByTitle(Integer id) {
+    public ApplicantJobRecommendedDTO recommendedByTitle(Integer id) {
         Applicant applicant = applicantRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El perfil con ID " + id + " no fue encontrado"));
 
         List<Job> recommendedJobs = jobRepository.recommendedByTitle(applicant.getDegree());
         List<Integer> recommendedJobIds = recommendedJobs.stream().map(Job::getId).collect(Collectors.toList());
-        ApplicantJobRecommendedDto applicantJobRecommendedDto = new ApplicantJobRecommendedDto();
+        ApplicantJobRecommendedDTO applicantJobRecommendedDto = new ApplicantJobRecommendedDTO();
 
         applicantJobRecommendedDto.setApplicantId(id);
         applicantJobRecommendedDto.setRecommendedJobIds(recommendedJobIds);
@@ -144,12 +144,12 @@ public class ApplicantServiceImpl implements ApplicantService {
         return applicantJobRecommendedDto;
     }
     @Override
-    public ApplicantJobRecommendedDto recommendedByLocation(Integer id) {
+    public ApplicantJobRecommendedDTO recommendedByLocation(Integer id) {
         Applicant applicant = applicantRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El perfil con ID " + id + " no fue encontrado"));
 
         List<Job> recommendedJobs = jobRepository.recommendedByLocation(applicant.getCountry());
         List<Integer> recommendedJobIds = recommendedJobs.stream().map(Job::getId).collect(Collectors.toList());
-        ApplicantJobRecommendedDto applicantJobRecommendedDto = new ApplicantJobRecommendedDto();
+        ApplicantJobRecommendedDTO applicantJobRecommendedDto = new ApplicantJobRecommendedDTO();
 
         applicantJobRecommendedDto.setApplicantId(id);
         applicantJobRecommendedDto.setRecommendedJobIds(recommendedJobIds);

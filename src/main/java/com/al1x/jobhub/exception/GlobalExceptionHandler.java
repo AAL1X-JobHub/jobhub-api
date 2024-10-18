@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
 import java.util.stream.Collectors;
 
 @RestControllerAdvice
@@ -29,6 +30,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         errorDetails.setStatus(400);
         errorDetails.setDetails(ex.getMessage());
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(ResourceAlreadyExistsException.class)
+    public ResponseEntity<CustomErrorResponse> handleMembershipAlreadyExistsException(ResourceAlreadyExistsException ex) {
+        CustomErrorResponse errorDetails = new CustomErrorResponse();
+        errorDetails.setTitle("Resource already exists");
+        errorDetails.setStatus(400);
+        errorDetails.setDetails(ex.getMessage());
+        return new ResponseEntity<>(errorDetails, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(Exception.class)

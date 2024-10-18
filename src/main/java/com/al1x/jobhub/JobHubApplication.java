@@ -8,6 +8,6 @@ public class JobHubApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(JobHubApplication.class, args);
-    }
 
+    }
 }

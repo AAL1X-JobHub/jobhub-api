@@ -1,14 +1,20 @@
-INSERT INTO users (id, role, email, password, date_create, active_account)
+INSERT INTO roles (id, name)
 VALUES
-    (1, 'ADMIN', 'aiden.pierce@ctos.com', 'vigilante001', '2024-02-15', TRUE),
-    (2, 'USER', 'clara.lille@deadsec.org', 'decrypt321', '2024-02-16', TRUE),
-    (3, 'USER', 'damien.brinks@fixer.net', 'brinker789', '2024-02-17', TRUE),
-    (4, 'COMPANY', 'jordie.chin@blackmarket.com', 'chinman456', '2024-02-18', TRUE),
-    (5, 'USER', 'tbone.grady@ctos.com', 'tbonebuilder321', '2024-02-19', FALSE),
-    (6, 'USER', 'marcus.holloway@deadsec.com', 'hacktheworld002', '2024-02-20', TRUE),
-    (7, 'COMPANY', 'josh.saunders@dedsec.com', 'logicbomb789', '2024-02-21', TRUE),
-    (8, 'COMPANY', 'sitara.dhawan@dedsec.com', 'grafqueen456', '2024-02-22', TRUE),
-    (9, 'COMPANY', 'raymond.kenney@tbone.com', 'wrenchmaster101', '2024-02-23', FALSE);
+    (1, 'USER'),
+    (2, 'COMPANY'),
+    (3, 'ADMIN');
+
+INSERT INTO users (id, role_id, email, password, date_create, active_account)
+VALUES
+    (1, 3, 'aiden.pierce@ctos.com', '$2a$10$dRTTAy3pvEwFieCWemmvgumHCK3vbx1ciELnDawZ9cG4PHpC0bbs.', '2024-02-15', TRUE),
+    (2, 1, 'clara.lille@deadsec.org', '$2a$10$DhX6HXSWbk4hZDGCYBgJt.lyztAUxef3HPg/bO8Timok5JCoMvXma', '2024-02-16', TRUE),
+    (3, 1, 'damien.brinks@fixer.net', '$2a$10$AWQDZ3oFjnzgql/MT0uHgu26qpDR4jKyNIBrps1h38OaLavSisYP2', '2024-02-17', TRUE),
+    (4, 2, 'jordie.chin@blackmarket.com', '$2a$10$5/L85hre5D/ljo7Jp.vfjuzPXgT6XxdNmtmazWxldIRPcYYOrz2h.', '2024-02-18', TRUE),
+    (5, 1, 'tbone.grady@ctos.com', '$2a$10$fPd33h6qh/Rky63cZlOm1emqH5zGjEuRZ1yiQ4HZ5WgXY/vxaTBxW', '2024-02-19', FALSE),
+    (6, 1, 'marcus.holloway@deadsec.com', '$2a$10$RdqQ/am/ITZGg1/RAeoSVulGtQTnGtVfOCQ/DtpkyjG3F8V.NDQdu', '2024-02-20', TRUE),
+    (7, 2, 'josh.saunders@dedsec.com', '$2a$10$C77/YZGaVIUDz7vJLS5sfuwcKuVGG1.Q4NQ/iKsa7zzw8IAjtA5zm', '2024-02-21', TRUE),
+    (8, 2, 'sitara.dhawan@dedsec.com', '$2a$10$InZs6JrDJIe4FcRvfZIDsefbUrRUwRO0WI3EM2KRyNlOcrXN/41YS', '2024-02-22', TRUE),
+    (9, 2, 'raymond.kenney@tbone.com', '$2a$10$dxYDABI3J6jGVxTQWRd1U./tDGvRjJ5zkGt7xBKquPM6oSYUsJ1Ay', '2024-02-23', FALSE);
 
 
 INSERT INTO applicants (id, first_name, last_name, degree, description, country, college, email, phone, curriculum_path, experience, education, user_id)

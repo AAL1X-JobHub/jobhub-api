@@ -4,8 +4,6 @@ import com.al1x.jobhub.dto.*;
 import com.al1x.jobhub.model.entity.Applicant;
 import com.al1x.jobhub.model.entity.Application;
 import com.al1x.jobhub.service.ApplicantService;
-import com.al1x.jobhub.service.ApplicationService;
-import com.al1x.jobhub.service.impl.ApplicationServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,14 +22,10 @@ public class ApplicantController {
     public ResponseEntity<List<Applicant>> readApplicants(){
         return new ResponseEntity<>(applicantService.readApplicants(), HttpStatus.FOUND);
     }
-    @GetMapping("/{id}/applicationHistory")
-    public ResponseEntity<List<Application>> getApplicationHistory(@PathVariable("id") Integer id) {
-        return new ResponseEntity<>(applicantService.readApplicationHistory(id), HttpStatus.FOUND);
-    }
 
     // CRUD
     @PostMapping("/create")
-    public ResponseEntity<String> createApplicant(@RequestBody ApplicantDto applicantDto) {
+    public ResponseEntity<String> createApplicant(@RequestBody ApplicantDTO applicantDto) {
         applicantService.createApplicant(applicantDto);
         return new ResponseEntity<>("El perfil fue creado correctamente", HttpStatus.CREATED);
     }
@@ -40,7 +34,7 @@ public class ApplicantController {
         return new ResponseEntity<>(applicantService.readApplicant(id), HttpStatus.FOUND);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateApplicant(@PathVariable("id") Integer id, @RequestBody ProfileUpdateDto profileUpdateDto) {
+    public ResponseEntity<String> updateApplicant(@PathVariable("id") Integer id, @RequestBody ApplicantUpdateDTO profileUpdateDto) {
         applicantService.updateApplicant(id, profileUpdateDto);
         return new ResponseEntity<>("El perfil fue modificado correctamente", HttpStatus.ACCEPTED);
     }
@@ -52,27 +46,27 @@ public class ApplicantController {
 
     // US 14
     @PostMapping("/{id}/addCurriculum")
-    public ResponseEntity<String> addApplicantCurriculum(@PathVariable("id") Integer id, @RequestBody CurriculumUpdateDto curriculumUpdateDto) {
+    public ResponseEntity<String> addApplicantCurriculum(@PathVariable("id") Integer id, @RequestBody CurriculumUpdateDTO curriculumUpdateDto) {
         applicantService.addApplicantCurriculum(id, curriculumUpdateDto);
         return new ResponseEntity<>("El curriculum fue agregado correctamente", HttpStatus.ACCEPTED);
     }
     // US 15
     @PutMapping("/{id}/addInfomation")
-    public ResponseEntity<String> addInformationToProfile(@PathVariable("id") Integer id, @RequestBody ProfileUpdateDto profileUpdateDto) {
+    public ResponseEntity<String> addInformationToProfile(@PathVariable("id") Integer id, @RequestBody ApplicantUpdateDTO profileUpdateDto) {
         applicantService.addApplicantInformation(id, profileUpdateDto);
         return new ResponseEntity<>("La información fue agregada correctamente", HttpStatus.ACCEPTED);
     }
     // US 19
     @GetMapping("/{id}/jobsRecommended")
-    public ResponseEntity<ApplicantJobRecommendedDto> recommendedJobs(@PathVariable("id") Integer id) {
+    public ResponseEntity<ApplicantJobRecommendedDTO> recommendedJobs(@PathVariable("id") Integer id) {
         return new ResponseEntity<>(applicantService.recommendedJobs(id), HttpStatus.FOUND);
     }
     @GetMapping("/{id}/jobsRecommended/title")
-    public ResponseEntity<ApplicantJobRecommendedDto> recommendedByTitle(@PathVariable("id") Integer id) {
+    public ResponseEntity<ApplicantJobRecommendedDTO> recommendedByTitle(@PathVariable("id") Integer id) {
         return new ResponseEntity<>(applicantService.recommendedByTitle(id), HttpStatus.FOUND);
     }
     @GetMapping("/{id}/jobsRecommended/location")
-    public ResponseEntity<ApplicantJobRecommendedDto> recommendedByLocation(@PathVariable("id") Integer id) {
+    public ResponseEntity<ApplicantJobRecommendedDTO> recommendedByLocation(@PathVariable("id") Integer id) {
         return new ResponseEntity<>(applicantService.recommendedByLocation(id), HttpStatus.FOUND);
     }
 
@@ -81,5 +75,9 @@ public class ApplicantController {
     public ResponseEntity<String> applicationJob(@PathVariable("id") Integer id, @RequestParam(name = "jobId", required = false) Integer jobId) {
         applicantService.applicationJob(id, jobId);
         return new ResponseEntity<>("La postulación fue creada correctamente", HttpStatus.CREATED);
+    }
+    @GetMapping("/{id}/applicationHistory")
+    public ResponseEntity<List<Application>> getApplicationHistory(@PathVariable("id") Integer id) {
+        return new ResponseEntity<>(applicantService.readApplicationHistory(id), HttpStatus.FOUND);
     }
 }

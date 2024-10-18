@@ -1,6 +1,6 @@
 package com.al1x.jobhub.api;
 
-import com.al1x.jobhub.dto.ApplicationDto;
+import com.al1x.jobhub.dto.ApplicationDTO;
 import com.al1x.jobhub.model.entity.Application;
 import com.al1x.jobhub.service.ApplicantService;
 import com.al1x.jobhub.service.ApplicationService;
@@ -20,7 +20,7 @@ public class ApplicationController {
 
     // CRUD
     @PostMapping("/create")
-    public ResponseEntity<String> createApplication(@RequestBody ApplicationDto applicationDto) {
+    public ResponseEntity<String> createApplication(@RequestBody ApplicationDTO applicationDto) {
         applicationService.createApplication(applicationDto);
         return new ResponseEntity<>("La postulación fue creada correctamente", HttpStatus.CREATED);
     }
@@ -29,7 +29,7 @@ public class ApplicationController {
         return new ResponseEntity<>(applicantService.readApplicationHistory(applicantId), HttpStatus.FOUND);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateApplication(@PathVariable("id")Integer id, @RequestBody ApplicationDto applicationDto) {
+    public ResponseEntity<String> updateApplication(@PathVariable("id")Integer id, @RequestBody ApplicationDTO applicationDto) {
         applicationService.updateApplication(id, applicationDto);
         return new ResponseEntity<>("La postulación fue modificada correctamente", HttpStatus.ACCEPTED);
     }

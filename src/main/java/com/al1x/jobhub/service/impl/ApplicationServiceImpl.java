@@ -1,6 +1,6 @@
 package com.al1x.jobhub.service.impl;
 
-import com.al1x.jobhub.dto.ApplicationDto;
+import com.al1x.jobhub.dto.ApplicationDTO;
 import com.al1x.jobhub.exception.ResourceNotFoundException;
 import com.al1x.jobhub.mapper.ApplicationMapper;
 import com.al1x.jobhub.model.entity.Application;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -31,7 +30,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     // CRUD
     @Transactional
     @Override
-    public void createApplication(ApplicationDto applicationDto) {
+    public void createApplication(ApplicationDTO applicationDto) {
         Application application = applicationMapper.toApplication(applicationDto);
 
         Job job = jobRepository.findById(applicationDto.getJobId()).orElseThrow(() -> new ResourceNotFoundException("El trabajo con ID " + applicationDto.getJobId() + " no fue encontrado"));
@@ -45,7 +44,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
     @Transactional
     @Override
-    public void updateApplication(Integer id, ApplicationDto applicationDto) {
+    public void updateApplication(Integer id, ApplicationDTO applicationDto) {
         Application application = applicationRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("La postulación con ID " + id + " no fue encontrada"));
 
         Job job = jobRepository.findById(applicationDto.getJobId()).orElseThrow(() -> new ResourceNotFoundException("El trabajo con ID " + applicationDto.getJobId() + " no fue encontrado"));

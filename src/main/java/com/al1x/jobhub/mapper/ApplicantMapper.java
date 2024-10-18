@@ -1,8 +1,8 @@
 package com.al1x.jobhub.mapper;
 
 import com.al1x.jobhub.model.entity.Applicant;
-import com.al1x.jobhub.dto.ApplicantDetailsDto;
-import com.al1x.jobhub.dto.ApplicantDto;
+import com.al1x.jobhub.dto.ApplicantDetailsDTO;
+import com.al1x.jobhub.dto.ApplicantDTO;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class ApplicantMapper {
     private final ModelMapper modelMapper;
 
-    public ApplicantDetailsDto toApplicantDetailsDto(Applicant applicant) { return modelMapper.map(applicant, ApplicantDetailsDto.class); }
-    public Applicant toApplicant(ApplicantDetailsDto applicantDetailsDto) { return modelMapper.map(applicantDetailsDto, Applicant.class); }
-    public Applicant toApplicant(ApplicantDto applicantDto) { return modelMapper.map(applicantDto, Applicant.class); }
+    public ApplicantDetailsDTO toApplicantDetailsDTO(Applicant applicant) { return modelMapper.map(applicant, ApplicantDetailsDTO.class); }
+    public Applicant toApplicant(ApplicantDetailsDTO applicantDetailsDTO) { return modelMapper.map(applicantDetailsDTO, Applicant.class); }
+    public Applicant toApplicant(ApplicantDTO applicantDTO) { return modelMapper.map(applicantDTO, Applicant.class); }
 }
