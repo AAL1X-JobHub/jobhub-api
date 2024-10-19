@@ -9,7 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApplicationDTO {
-    private Integer jobId;
-    private Integer applicantId;
+public class ApplicantCurriculumUpdateDTO {
+    private String curriculumPath;
 }

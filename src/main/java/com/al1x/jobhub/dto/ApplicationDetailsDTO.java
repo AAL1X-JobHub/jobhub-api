@@ -10,6 +10,5 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ApplicationDetailsDTO {
     private LocalDate dateCreated;
-    private Integer jobId;
-    private Integer applicantId;
+    private JobDetailsDTO job;
 }

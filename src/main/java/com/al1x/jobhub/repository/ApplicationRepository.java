@@ -1,5 +1,6 @@
 package com.al1x.jobhub.repository;
 
+import com.al1x.jobhub.dto.ApplicationDetailsDTO;
 import com.al1x.jobhub.model.entity.Application;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

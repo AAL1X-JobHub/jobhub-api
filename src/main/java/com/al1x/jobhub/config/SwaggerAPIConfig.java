@@ -19,7 +19,7 @@ public class SwaggerAPIConfig {
     @Value("${jobhub.openapi.dev-url}")
     private String devUrl;
 
-    @Value("${jobhub.openapi.dev-url}")
+    @Value("${jobhub.openapi.prod-url}")
     private String prodUrl;
 
     @Bean

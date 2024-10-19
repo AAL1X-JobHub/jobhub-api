@@ -9,6 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CurriculumUpdateDTO {
-    private String filePath;
+public class CompanyDetailsDTO {
+    private String companyName;
+    private String website;
+    private String country;
 }

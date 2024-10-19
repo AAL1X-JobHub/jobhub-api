@@ -9,12 +9,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ApplicantUpdateDTO {
-    private String firstName;
-    private String lastName;
-    private String degree;
+public class CompanyDTO {
+    private String companyName;
+    private String website;
     private String description;
     private String country;
-    private String college;
+    private String email;
     private String phone;
 }

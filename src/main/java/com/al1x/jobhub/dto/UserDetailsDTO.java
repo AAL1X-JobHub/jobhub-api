@@ -1,6 +1,5 @@
 package com.al1x.jobhub.dto;
 
-import com.al1x.jobhub.model.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,5 +15,5 @@ public class UserDetailsDTO {
     private String roleName;
     private String email;
     private LocalDate dateCreate;
-    private Boolean activeAccount;
+    private ApplicantDetailsDTO applicantDetailsDTO;
 }

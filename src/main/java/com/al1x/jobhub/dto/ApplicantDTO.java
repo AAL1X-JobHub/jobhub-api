@@ -10,7 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ApplicantDTO {
-    private Integer userId;
     private String firstName;
     private String lastName;
     private String degree;
@@ -19,7 +18,4 @@ public class ApplicantDTO {
     private String college;
     private String email;
     private String phone;
-    private String curriculumPath;
-    private String experience;
-    private String education;
 }

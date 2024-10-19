@@ -10,6 +10,10 @@ public class ApplicantDetailsDTO {
     private String firstName;
     private String lastName;
     private String degree;
-    private String description;
     private String country;
+    private String email;
+    private String phone;
+    private String curriculumPath;
+    private String experience;
+    private String education;
 }

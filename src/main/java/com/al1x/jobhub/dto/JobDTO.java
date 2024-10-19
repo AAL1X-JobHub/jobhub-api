@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JobDTO {
-    private Integer company_id;
+    private String companyName;
     private String title;
     private String description;
     private String location;

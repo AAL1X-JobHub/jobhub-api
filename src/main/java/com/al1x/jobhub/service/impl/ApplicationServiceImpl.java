@@ -1,7 +1,9 @@
 package com.al1x.jobhub.service.impl;
 
 import com.al1x.jobhub.dto.ApplicationDTO;
+import com.al1x.jobhub.dto.ApplicationDetailsDTO;
 import com.al1x.jobhub.exception.ResourceNotFoundException;
+import com.al1x.jobhub.mapper.ApplicantMapper;
 import com.al1x.jobhub.mapper.ApplicationMapper;
 import com.al1x.jobhub.model.entity.Application;
 import com.al1x.jobhub.model.entity.Applicant;
@@ -23,14 +25,15 @@ public class ApplicationServiceImpl implements ApplicationService {
     private final JobRepository jobRepository;
     private final ApplicantRepository applicantRepository;
     private final ApplicationMapper applicationMapper;
+    private final ApplicantMapper applicantMapper;
 
-    // Another Funtions
+    // Another Functions
 
 
     // CRUD
     @Transactional
     @Override
-    public void createApplication(ApplicationDTO applicationDto) {
+    public ApplicationDetailsDTO createApplication(ApplicationDTO applicationDto) {
         Application application = applicationMapper.toApplication(applicationDto);
 
         Job job = jobRepository.findById(applicationDto.getJobId()).orElseThrow(() -> new ResourceNotFoundException("El trabajo con ID " + applicationDto.getJobId() + " no fue encontrado"));
@@ -40,8 +43,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         application.setJob(job);
         application.setApplicant(applicant);
 
-        applicationRepository.save(application);
+        return applicationMapper.toApplicationDetailsDto(applicationRepository.save(application));
     }
+
     @Transactional
     @Override
     public void updateApplication(Integer id, ApplicationDTO applicationDto) {
@@ -55,10 +59,27 @@ public class ApplicationServiceImpl implements ApplicationService {
 
         applicationRepository.save(application);
     }
+
     @Transactional
     @Override
     public void deleteApplication(Integer id) {
         Application application = applicationRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("La postulación con ID " + id + " no fue encontrada"));
         applicationRepository.delete(application);
+    }
+
+    // US 18
+    @Transactional
+    @Override
+    public ApplicationDetailsDTO applicationJob(Integer id, Integer jobId) {
+        Application application = new Application();
+
+        Job job = jobRepository.findById(jobId).orElseThrow(() -> new ResourceNotFoundException("El trabajo con ID " + jobId + " no fue encontrado"));
+        Applicant applicant = applicantRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El perfil con ID " + id + " no fue encontrado"));
+
+        application.setDateCreated(LocalDate.now());
+        application.setJob(job);
+        application.setApplicant(applicant);
+
+        return applicationMapper.toApplicationDetailsDto(applicationRepository.save(application));
     }
 }

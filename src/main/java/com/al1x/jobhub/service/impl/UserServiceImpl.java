@@ -56,10 +56,7 @@ public class UserServiceImpl implements UserService {
     public UserDetailsDTO createUser(UserDTO userDto, ERole eRole) {
         User user = userMapper.toUser(userDto);
 
-        Role role = roleRepository.findByName(eRole)
-                .orElseThrow(() -> new RoleNotFoundException("Error: Role is not found."));
-
-        user.setRole(role);
+        user.setRole(roleRepository.findByName(eRole).get());
         user.setEmail(userDto.getEmail());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
@@ -67,9 +64,9 @@ public class UserServiceImpl implements UserService {
         user.setActiveAccount(false);
         user.setApplicant(null);
 
-        User userDetailsDto = userRepository.save(user);
+        userRepository.save(user);
 
-        return userMapper.toUserDetailsDto(userDetailsDto);
+        return userMapper.toUserDetailsDto(user);
     }
     @Override
     public UserDetailsDTO readUser(Integer id) {
