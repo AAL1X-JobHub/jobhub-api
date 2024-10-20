@@ -8,7 +8,6 @@ import java.util.List;
 
 @Repository
 public interface ApplicationRepository extends JpaRepository<Application, Integer> {
-    @Query("SELECT a FROM Application a JOIN FETCH a.job j JOIN FETCH a.applicant app WHERE app.id = :id")
+    @Query("SELECT a FROM Application a JOIN FETCH a.applicant app WHERE app.id = :id")
     List<Application> findByApplicantId(Integer id);
-
 }

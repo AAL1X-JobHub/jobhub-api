@@ -24,8 +24,8 @@ public class ApplicationController {
         return new ResponseEntity<>(applicationService.createApplication(applicationDto), HttpStatus.CREATED);
     }
     @GetMapping("/read/{id}")
-    public ResponseEntity<List<ApplicationDetailsDTO>> readApplications(@RequestParam(name = "applicantId", required = false) Integer applicantId){
-        return new ResponseEntity<>(applicantService.readApplicationHistory(applicantId), HttpStatus.FOUND);
+    public ResponseEntity<List<ApplicationDetailsDTO>> readApplications(@PathVariable("id") Integer id){
+        return new ResponseEntity<>(applicantService.readApplicationHistory(id), HttpStatus.FOUND);
     }
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateApplication(@PathVariable("id")Integer id, @RequestBody ApplicationDTO applicationDto) {

@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
     // Another Functions
     @Override
     public List<UserDetailsDTO> readUsers() {
-        return userRepository.findAll().stream().map(userMapper::toUserDetailsDto).collect(Collectors.toList());
+        return userRepository.findAll().stream().map(userMapper::toUserDetailsDTO).collect(Collectors.toList());
     }
 
     // CRUD
@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
 
-        return userMapper.toUserDetailsDto(user);
+        return userMapper.toUserDetailsDTO(user);
     }
     @Override
     public UserDetailsDTO readUser(Integer id) {
@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
             throw new IllegalStateException("No hay sesión activa para este usuario");
         }
 
-        return userMapper.toUserDetailsDto(userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El usuario con ID " + id + " no fue encontrado")));
+        return userMapper.toUserDetailsDTO(userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("El usuario con ID " + id + " no fue encontrado")));
     }
     @Transactional
     @Override
@@ -90,8 +90,7 @@ public class UserServiceImpl implements UserService {
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
 
-        User userDetailsDto = userRepository.save(user);
-        return userMapper.toUserDetailsDto(userDetailsDto);
+        return userMapper.toUserDetailsDTO(user);
     }
     // US 05
     @Transactional
@@ -114,7 +113,7 @@ public class UserServiceImpl implements UserService {
         );
 
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
-        UserDetailsDTO userDetailsDTO = userMapper.toUserDetailsDto(userPrincipal.getUser());
+        UserDetailsDTO userDetailsDTO = userMapper.toUserDetailsDTO(userPrincipal.getUser());
 
         //boolean isAdmin = userDetailsDTO.getRoleName().equals("ADMIN");
 

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class UserMapper {
     private final ModelMapper modelMapper;
 
-    public UserDetailsDTO toUserDetailsDto(User user) { return modelMapper.map(user, UserDetailsDTO.class); }
+    public UserDetailsDTO toUserDetailsDTO(User user) { return modelMapper.map(user, UserDetailsDTO.class); }
     public User toUser(UserDetailsDTO userDetailsDto) { return modelMapper.map(userDetailsDto, User.class); }
     public User toUser(UserDTO userDto) { return modelMapper.map(userDto, User.class); }
 }

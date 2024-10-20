@@ -1,10 +1,12 @@
 package com.al1x.jobhub.mapper;
 
 import com.al1x.jobhub.domain.entity.Applicant;
+import com.al1x.jobhub.domain.entity.User;
 import com.al1x.jobhub.dto.ApplicantDetailsDTO;
 import com.al1x.jobhub.dto.ApplicantDTO;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.spi.SourceGetter;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
