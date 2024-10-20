@@ -2,7 +2,6 @@ package com.al1x.jobhub.api;
 
 import com.al1x.jobhub.dto.ApplicationDTO;
 import com.al1x.jobhub.dto.ApplicationDetailsDTO;
-import com.al1x.jobhub.model.entity.Application;
 import com.al1x.jobhub.service.ApplicantService;
 import com.al1x.jobhub.service.ApplicationService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +23,7 @@ public class ApplicationController {
     public ResponseEntity<ApplicationDetailsDTO> createApplication(@RequestBody ApplicationDTO applicationDto) {
         return new ResponseEntity<>(applicationService.createApplication(applicationDto), HttpStatus.CREATED);
     }
-    @GetMapping("/read")
+    @GetMapping("/read/{id}")
     public ResponseEntity<List<ApplicationDetailsDTO>> readApplications(@RequestParam(name = "applicantId", required = false) Integer applicantId){
         return new ResponseEntity<>(applicantService.readApplicationHistory(applicantId), HttpStatus.FOUND);
     }

@@ -1,7 +1,7 @@
 package com.al1x.jobhub.config;
 
-import com.al1x.jobhub.model.entity.Role;
-import com.al1x.jobhub.model.enums.ERole;
+import com.al1x.jobhub.domain.entity.Role;
+import com.al1x.jobhub.domain.enums.ERole;
 import com.al1x.jobhub.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

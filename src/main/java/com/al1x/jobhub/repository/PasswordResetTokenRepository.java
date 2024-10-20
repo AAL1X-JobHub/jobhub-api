@@ -1,6 +1,6 @@
 package com.al1x.jobhub.repository;
 
-import com.al1x.jobhub.model.entity.PasswordResetToken;
+import com.al1x.jobhub.domain.entity.PasswordResetToken;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

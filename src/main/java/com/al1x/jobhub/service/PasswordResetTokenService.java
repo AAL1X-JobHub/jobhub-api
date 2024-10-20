@@ -1,6 +1,6 @@
 package com.al1x.jobhub.service;
 
-import com.al1x.jobhub.model.entity.PasswordResetToken;
+import com.al1x.jobhub.domain.entity.PasswordResetToken;
 
 public interface PasswordResetTokenService {
     void createAndSendPasswordResetToken(String email) throws Exception;

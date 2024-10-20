@@ -1,7 +1,6 @@
 package com.al1x.jobhub.api;
 
 import com.al1x.jobhub.dto.*;
-import com.al1x.jobhub.model.entity.Application;
 import com.al1x.jobhub.service.ApplicantService;
 import com.al1x.jobhub.service.ApplicationService;
 import lombok.RequiredArgsConstructor;

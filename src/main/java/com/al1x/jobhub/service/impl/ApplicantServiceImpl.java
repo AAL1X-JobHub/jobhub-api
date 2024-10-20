@@ -3,10 +3,8 @@ package com.al1x.jobhub.service.impl;
 import com.al1x.jobhub.dto.*;
 import com.al1x.jobhub.mapper.ApplicationMapper;
 import com.al1x.jobhub.mapper.JobMapper;
-import com.al1x.jobhub.model.entity.Applicant;
-import com.al1x.jobhub.model.entity.Application;
-import com.al1x.jobhub.model.entity.Job;
-import com.al1x.jobhub.model.entity.User;
+import com.al1x.jobhub.domain.entity.Applicant;
+import com.al1x.jobhub.domain.entity.User;
 import com.al1x.jobhub.exception.ResourceNotFoundException;
 import com.al1x.jobhub.mapper.ApplicantMapper;
 import com.al1x.jobhub.repository.ApplicantRepository;
@@ -18,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 

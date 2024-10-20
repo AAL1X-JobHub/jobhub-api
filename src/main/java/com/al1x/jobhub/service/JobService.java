@@ -3,7 +3,7 @@ package com.al1x.jobhub.service;
 import com.al1x.jobhub.dto.JobDTO;
 import com.al1x.jobhub.dto.JobDetailsDTO;
 import com.al1x.jobhub.dto.JobUpdateDTO;
-import com.al1x.jobhub.model.entity.Job;
+
 import java.util.List;
 
 public interface JobService {

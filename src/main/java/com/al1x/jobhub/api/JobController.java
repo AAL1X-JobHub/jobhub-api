@@ -1,7 +1,6 @@
 package com.al1x.jobhub.api;
 
 import com.al1x.jobhub.dto.JobDetailsDTO;
-import com.al1x.jobhub.model.entity.Job;
 import com.al1x.jobhub.dto.JobDTO;
 import com.al1x.jobhub.dto.JobUpdateDTO;
 import com.al1x.jobhub.service.JobService;

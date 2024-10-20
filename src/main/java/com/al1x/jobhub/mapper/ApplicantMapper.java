@@ -1,6 +1,6 @@
 package com.al1x.jobhub.mapper;
 
-import com.al1x.jobhub.model.entity.Applicant;
+import com.al1x.jobhub.domain.entity.Applicant;
 import com.al1x.jobhub.dto.ApplicantDetailsDTO;
 import com.al1x.jobhub.dto.ApplicantDTO;
 import lombok.RequiredArgsConstructor;

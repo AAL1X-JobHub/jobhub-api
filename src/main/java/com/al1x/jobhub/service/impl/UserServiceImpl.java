@@ -5,12 +5,11 @@ import com.al1x.jobhub.dto.UserDTO;
 import com.al1x.jobhub.dto.UserLoginDTO;
 import com.al1x.jobhub.dto.UserLoginResponseDTO;
 import com.al1x.jobhub.exception.ResourceNotFoundException;
-import com.al1x.jobhub.exception.RoleNotFoundException;
 import com.al1x.jobhub.mapper.ApplicantMapper;
 import com.al1x.jobhub.mapper.UserMapper;
-import com.al1x.jobhub.model.entity.Role;
-import com.al1x.jobhub.model.entity.User;
-import com.al1x.jobhub.model.enums.ERole;
+import com.al1x.jobhub.domain.entity.Role;
+import com.al1x.jobhub.domain.entity.User;
+import com.al1x.jobhub.domain.enums.ERole;
 import com.al1x.jobhub.repository.ApplicantRepository;
 import com.al1x.jobhub.repository.RoleRepository;
 import com.al1x.jobhub.repository.UserRepository;
@@ -117,7 +116,7 @@ public class UserServiceImpl implements UserService {
         UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
         UserDetailsDTO userDetailsDTO = userMapper.toUserDetailsDto(userPrincipal.getUser());
 
-        boolean isAdmin = userDetailsDTO.getRoleName().equals("ADMIN");
+        //boolean isAdmin = userDetailsDTO.getRoleName().equals("ADMIN");
 
         String token = tokenProvider.createAccessToken(authentication);
 

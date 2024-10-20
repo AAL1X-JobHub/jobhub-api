@@ -1,6 +1,6 @@
 package com.al1x.jobhub.security;
 
-import com.al1x.jobhub.model.entity.User;
+import com.al1x.jobhub.domain.entity.User;
 import com.al1x.jobhub.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

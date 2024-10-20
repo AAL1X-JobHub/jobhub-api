@@ -2,7 +2,7 @@ package com.al1x.jobhub.mapper;
 
 import com.al1x.jobhub.dto.UserDTO;
 import com.al1x.jobhub.dto.UserDetailsDTO;
-import com.al1x.jobhub.model.entity.User;
+import com.al1x.jobhub.domain.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;

@@ -4,7 +4,7 @@ import com.al1x.jobhub.dto.UserDetailsDTO;
 import com.al1x.jobhub.dto.UserDTO;
 import com.al1x.jobhub.dto.UserLoginDTO;
 import com.al1x.jobhub.dto.UserLoginResponseDTO;
-import com.al1x.jobhub.model.enums.ERole;
+import com.al1x.jobhub.domain.enums.ERole;
 import com.al1x.jobhub.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

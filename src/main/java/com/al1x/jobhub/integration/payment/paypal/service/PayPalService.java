@@ -1,8 +1,11 @@
 package com.al1x.jobhub.integration.payment.paypal.service;
 
-import com.al1x.jobhub.integration.payment.paypal.dto.OrderCaptureResponse;
-import com.al1x.jobhub.integration.payment.paypal.dto.TokenResponse;
+import com.al1x.jobhub.domain.entity.Purchase;
+import com.al1x.jobhub.exception.ResourceNotFoundException;
+import com.al1x.jobhub.integration.payment.paypal.dto.*;
+import com.al1x.jobhub.repository.PurchaseRepository;
 import jakarta.annotation.PostConstruct;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -13,6 +16,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestClient;
 
 import java.util.Base64;
+import java.util.Collections;
 import java.util.Objects;
 
 @RequiredArgsConstructor
@@ -26,6 +30,8 @@ public class PayPalService {
     private String apiBase;
 
     private RestClient paypalClient;
+    @NonNull
+    private PurchaseRepository purchaseRepository;
 
     @PostConstruct
     public void init(){
@@ -53,10 +59,10 @@ public class PayPalService {
                                 .getAccessToken();
     }
 
-    /*
+
     public OrderResponse createOrder(Integer purchaseId, String returnUrl, String cancelUrl){
-        Purchase purchase= purchaseRepository.findById(purchaseId)
-                .orElseThrow(ResourceNotFoundException::new);
+        Purchase purchase = purchaseRepository.findById(purchaseId)
+                .orElseThrow(() -> new ResourceNotFoundException("Purchase not found"));
 
         //Construcción de la solicitud de Pedido de Pago
         OrderRequest orderRequest = new OrderRequest();
@@ -89,8 +95,6 @@ public class PayPalService {
                 .toEntity(OrderResponse.class)
                 .getBody();
     }
-     */
-
 
     public OrderCaptureResponse captureOrder(String orderId){
         return paypalClient.post()

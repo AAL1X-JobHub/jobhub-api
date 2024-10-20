@@ -1,6 +1,6 @@
 package com.al1x.jobhub.repository;
 
-import com.al1x.jobhub.model.entity.User;
+import com.al1x.jobhub.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,6 @@
 package com.al1x.jobhub.service;
 
 import com.al1x.jobhub.dto.*;
-import com.al1x.jobhub.model.entity.Application;
 
 import java.util.List;
 

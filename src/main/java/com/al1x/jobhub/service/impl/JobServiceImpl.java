@@ -1,8 +1,8 @@
 package com.al1x.jobhub.service.impl;
 
 import com.al1x.jobhub.dto.JobDetailsDTO;
-import com.al1x.jobhub.model.entity.Company;
-import com.al1x.jobhub.model.entity.Job;
+import com.al1x.jobhub.domain.entity.Company;
+import com.al1x.jobhub.domain.entity.Job;
 import com.al1x.jobhub.dto.JobDTO;
 import com.al1x.jobhub.dto.JobUpdateDTO;
 import com.al1x.jobhub.exception.ResourceNotFoundException;
